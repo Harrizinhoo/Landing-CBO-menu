@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>smart menú | Cafetería Escolar I.E. Celmira Bueno de Orejuela</title>
+  <meta name="description" content="Cafetería y restaurante escolar Smart Menú de la Institución Educativa Celmira Bueno de Orejuela (CBO). Nutrición saludable, alimentos frescos y calidad garantizada.">
+
+  <!-- Google Fonts: Playfair Display (Serif Títulos), Plus Jakarta Sans (Texto Limpio), Caveat (Cursiva Saludo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Favicon Oficial CBO -->
+  <link rel="icon" type="image/png" href="assets/images/cbo_logo.png">
+
+  <!-- Hoja de Estilos -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       TEXTURA SUTIL DE LÍNEAS TOPOGRÁFICAS (Esquina superior derecha)
+       ========================================================================= -->
+  <div class="topographic-texture-container" aria-hidden="true">
+    <svg class="topographic-svg" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Curvas de nivel topográficas concéntricas y orgánicas -->
+      <path d="M620,10 C500,30 460,110 390,90 C320,70 290,140 240,160 C180,185 140,260 110,340 C80,420 40,490 -20,540" stroke="#009A3B" stroke-width="1.8" stroke-dasharray="1 0" opacity="0.35"/>
+      <path d="M630,50 C520,70 480,150 410,130 C340,110 310,180 260,200 C200,225 160,300 130,380 C100,460 60,530 0,580" stroke="#009A3B" stroke-width="1.6" opacity="0.45"/>
+      <path d="M640,90 C540,110 500,190 430,170 C360,150 330,220 280,240 C220,265 180,340 150,420 C120,500 80,570 20,620" stroke="#009A3B" stroke-width="1.5" opacity="0.5"/>
+      <path d="M650,130 C560,150 520,230 450,210 C380,190 350,260 300,280 C240,305 200,380 170,460 C140,540 100,610 40,660" stroke="#009A3B" stroke-width="1.4" opacity="0.4"/>
+      <path d="M660,170 C580,190 540,270 470,250 C400,230 370,300 320,320 C260,345 220,420 190,500 C160,580 120,650 60,700" stroke="#009A3B" stroke-width="1.2" opacity="0.35"/>
+      <path d="M670,210 C600,230 560,310 490,290 C420,270 390,340 340,360 C280,385 240,460 210,540 C180,620 140,690 80,740" stroke="#009A3B" stroke-width="1.2" opacity="0.3"/>
+      <path d="M680,250 C620,270 580,350 510,330 C440,310 410,380 360,400 C300,425 260,500 230,580 C200,660 160,730 100,780" stroke="#009A3B" stroke-width="1.0" opacity="0.25"/>
+      <!-- Isolíneas circulares centrales -->
+      <circle cx="520" cy="80" r="45" stroke="#009A3B" stroke-width="1.2" opacity="0.3"/>
+      <circle cx="520" cy="80" r="28" stroke="#009A3B" stroke-width="1.0" opacity="0.4"/>
+      <circle cx="520" cy="80" r="12" stroke="#009A3B" stroke-width="1.0" opacity="0.5"/>
+    </svg>
+  </div>
+
+  <!-- =========================================================================
+       1. ENCABEZADO Y MENÚ DE NAVEGACIÓN (HEADER)
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+
+        <!-- Lado Izquierdo: Logotipo Institucional de la I.E. Celmira Bueno de Orejuela -->
+        <a href="#inicio" class="brand-institutional" data-route="inicio" aria-label="I.E. Celmira Bueno de Orejuela - Smart Menú">
+          <!-- Logotipo Oficial Institucional CBO -->
+          <img src="assets/images/cbo_logo.png" alt="Logotipo Oficial I.E. Celmira Bueno de Orejuela" class="cbo-shield-logo">
+
+          <!-- Texto Institucional y Subtítulo -->
+          <div class="brand-text-block">
+            <span class="brand-institution-title">I.E. Celmira Bueno de Orejuela</span>
+            <span class="brand-institution-sub">
+              Cafetería & Restaurante Escolar
+              <span class="brand-badge-pill">Cali</span>
+            </span>
+          </div>
+        </a>
+
+        <!-- Lado Derecho: Menú Superior Limpio en Mayúsculas (INICIO, CONTACTO, MÁS) -->
+        <nav class="main-nav" id="mainNav">
+          <ul class="nav-list">
+            <!-- 1. INICIO -->
+            <li class="nav-item">
+              <button class="nav-link active" data-route="inicio" id="nav-inicio">INICIO</button>
+            </li>
+
+            <!-- 2. MENÚ (Pasa a donde estaba Contacto) -->
+            <li class="nav-item">
+              <button class="nav-link" data-route="menu" id="nav-menu">MENÚ</button>
+            </li>
+
+            <!-- 3. MÁS (Menú Desplegable con Horario, Conócenos y Contacto) -->
+            <li class="nav-item dropdown-container">
+              <button class="nav-link dropdown-trigger" aria-haspopup="true" aria-expanded="false" id="nav-mas">
+                MÁS
+                <svg class="dropdown-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <ul class="dropdown-menu">
+                <!-- Horario -->
+                <li class="dropdown-item">
+                  <a class="dropdown-link" data-route="horario">
+                    <span class="dropdown-icon-box">🕒</span>
+                    <div>
+                      <span>HORARIO</span>
+                      <small class="dropdown-desc">Mañana (7:00 - 11:00 AM) y Tarde (1:20 - 3:00 PM)</small>
+                    </div>
+                  </a>
+                </li>
+                <!-- Conócenos (adentro de MÁS) -->
+                <li class="dropdown-item">
+                  <a class="dropdown-link" data-route="conocenos">
+                    <span class="dropdown-icon-box">🌿</span>
+                    <div>
+                      <span>CONÓCENOS</span>
+                      <small class="dropdown-desc">Higiene, calidad y compromiso escolar</small>
+                    </div>
+                  </a>
+                </li>
+                <!-- Contacto (Pasa a donde estaba Menú) -->
+                <li class="dropdown-item">
+                  <a class="dropdown-link" data-route="contacto">
+                    <span class="dropdown-icon-box">✉️</span>
+                    <div>
+                      <span>CONTACTO</span>
+                      <small class="dropdown-desc">Buzón de sugerencias, datos y atención</small>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Acciones en el Header (Móvil) -->
+        <div class="header-actions">
+          <!-- Toggle para Pantallas Móviles -->
+          <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Abrir menú de navegación">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       VISTA 1: PÁGINA DE INICIO (HERO SECTION + NUESTRO ESPACIO)
+       ========================================================================= -->
+  <main class="page-section active" id="section-inicio">
+    <div class="container">
+
+      <!-- 3. Sección Principal de Inicio (Hero Section) -->
+      <section class="hero-section">
+        <div class="hero-grid">
+
+          <!-- LADO IZQUIERDO (TEXTO) -->
+          <div class="hero-content-left">
+            <!-- Saludo estilizado en cursiva -->
+            <span class="hero-greeting">Bienvenidos a</span>
+
+            <!-- Título principal: smart menú (en dos líneas, fuente serif grande y negra) -->
+            <h1 class="hero-title">
+              <span>smart</span>
+              <span>menú<span class="title-accent-dot">.</span></span>
+            </h1>
+
+            <!-- Una línea divisoria horizontal sutil -->
+            <hr class="hero-divider">
+
+            <!-- Subtítulo: "Nuestro espacio" con estrella de 8 puntas -->
+            <h2 class="hero-subtitle">
+              Nuestro espacio
+              <!-- Estrella de 8 puntas verde institucional -->
+              <svg class="star-eight" width="22" height="22" viewBox="0 0 32 32">
+                <path d="M16 0 L18.8 11.2 L28 4 L20.8 13.2 L32 16 L20.8 18.8 L28 28 L18.8 20.8 L16 32 L13.2 20.8 L4 28 L11.2 18.8 L0 16 L11.2 13.2 L4 4 L13.2 11.2 Z" fill="#009A3B"/>
+              </svg>
+            </h2>
+
+            <p class="hero-description">
+              Un restaurante escolar diseñado para nutrir el aprendizaje, brindar bienestar físico y ofrecer momentos cálidos de convivencia en la I.E. Celmira Bueno de Orejuela.
+            </p>
+
+            <!-- Enlace o texto inferior: www.smartmenucbo.com -->
+            <div>
+              <a href="https://www.smartmenucbo.com" target="_blank" rel="noopener noreferrer" class="hero-web-link-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="2" y1="12" x2="22" y2="12"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+                <span>www.smartmenucbo.com</span>
+              </a>
+            </div>
+
+            <!-- Botones de Acción Inmediata hacia Menú y Horarios -->
+            <div class="hero-actions">
+              <button class="btn-primary" data-route="menu">
+                <span>Explorar Menú de Hoy</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+              <button class="btn-secondary" data-route="horario">
+                <span>Ver Horarios</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- LADO DERECHO (IMAGEN PRINCIPAL) -->
+          <div class="hero-visual-right">
+            <!-- Estrella de 8 puntas decorativa flotante superior -->
+            <div class="star-accent-floating" style="top: -15px; left: 15px;">
+              <svg width="28" height="28" viewBox="0 0 32 32">
+                <path d="M16 0 L18.8 11.2 L28 4 L20.8 13.2 L32 16 L20.8 18.8 L28 28 L18.8 20.8 L16 32 L13.2 20.8 L4 28 L11.2 18.8 L0 16 L11.2 13.2 L4 4 L13.2 11.2 Z" fill="#009A3B"/>
+              </svg>
+            </div>
+
+            <!-- Estrella de 8 puntas decorativa flotante inferior derecha -->
+            <div class="star-accent-floating" style="bottom: -20px; right: -10px; animation-delay: -3s;">
+              <svg width="24" height="24" viewBox="0 0 32 32">
+                <path d="M16 0 L18.8 11.2 L28 4 L20.8 13.2 L32 16 L20.8 18.8 L28 28 L18.8 20.8 L16 32 L13.2 20.8 L4 28 L11.2 18.8 L0 16 L11.2 13.2 L4 4 L13.2 11.2 Z" fill="#009A3B"/>
+              </svg>
+            </div>
+
+            <!-- DETRÁS DE LA FOTO: Forma ondulada fluida en verde (#009A3B) que se extiende verticalmente -->
+            <svg class="organic-green-wave-bg" viewBox="0 0 540 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M260 20 C380 -10, 490 50, 510 160 C530 270, 480 340, 500 420 C520 500, 440 570, 340 580 C240 590, 160 560, 110 490 C60 420, 70 330, 80 250 C90 170, 140 50, 260 20 Z" fill="#009A3B"/>
+              <!-- Acento secundario ondulado suave -->
+              <path d="M300 45 C410 20, 500 80, 520 180 C540 280, 490 350, 510 430 C530 510, 460 580, 370 590 Z" fill="#007A2E" opacity="0.3"/>
+            </svg>
+
+            <!-- FOTOGRAFÍA DESTACADA DEL ÁREA DE LA CAFETERÍA/COMEDOR ESCOLAR -->
+            <div class="hero-image-wrapper">
+              <img src="assets/images/cafeteria_hero.jpg" alt="Comedor y cafetería escolar de la Institución Educativa Celmira Bueno de Orejuela" class="hero-main-photo">
+              
+              <!-- Tarjeta flotante con certificación de calidad -->
+              <div class="hero-floating-badge">
+                <div class="floating-badge-icon">🌿</div>
+                <div class="floating-badge-text">
+                  <h4>Alimentación 100% Saludable</h4>
+                  <p>Avalado por el Comité de Nutrición CBO</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PRESENTACIÓN DE LA CAFETERÍA: 'NUESTRO ESPACIO' -->
+      <section class="space-section">
+        <div class="section-header">
+          <span class="section-tag">
+            <svg class="star-eight" width="14" height="14" viewBox="0 0 32 32">
+              <path d="M16 0 L18.8 11.2 L28 4 L20.8 13.2 L32 16 L20.8 18.8 L28 28 L18.8 20.8 L16 32 L13.2 20.8 L4 28 L11.2 18.8 L0 16 L11.2 13.2 L4 4 L13.2 11.2 Z" fill="#009A3B"/>
+            </svg>
+            Espacio & Bienestar
+          </span>
+          <h2 class="section-title">Un punto de encuentro, sabor y nutrición</h2>
+          <p class="section-subtitle">
+            Nuestro comedor escolar ha sido diseñado para ofrecer un entorno higiénico, iluminado y acogedor donde estudiantes, docentes y directivos disfrutan de una alimentación equilibrada cada día.
+          </p>
+        </div>
+
+        <!-- 3 Pilares del Espacio -->
+        <div class="space-features-grid">
+          <div class="space-card">
+            <div class="space-card-icon">🪑</div>
+            <h3>Comedor Amplio & Natural</h3>
+            <p>Mesas comunitarias, excelente ventilación cruzada e iluminación natural para que los momentos de descanso y almuerzo sean confortables y seguros.</p>
+          </div>
+
+          <div class="space-card">
+            <div class="space-card-icon">🥗</div>
+            <h3>Barra de Ensaladas & Frutas</h3>
+            <p>Ingredientes frescos cosechados en el Valle del Cauca, preparados con estrictos protocolos de bioseguridad e higiene en cada turno de atención.</p>
+          </div>
+
+          <div class="space-card">
+            <div class="space-card-icon">💧</div>
+            <h3>Puntos de Hidratación Pura</h3>
+            <p>Dispensadores de agua ozonizada y bebidas preparadas con pulpa natural de fruta, sin colorantes artificiales ni exceso de azúcares añadidos.</p>
+          </div>
+        </div>
+
+        <!-- Galería de Fotos del Espacio y Personal de Cafetería -->
+        <div class="space-gallery-grid">
+          <div class="gallery-item">
+            <img src="assets/images/equipo_2.jpg" alt="Manipuladora de alimentos en barra de servicio de la cafetería escolar" style="object-position: center 30%;">
+            <div class="gallery-caption">
+              <h4>Atención en Barra & Distribución Nutricional</h4>
+              <p>Servicio escolar diario con porciones equilibradas, hidratación fresca y trato afectuoso a los estudiantes.</p>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="assets/images/equipo_3.jpg" alt="Ventanilla del restaurante escolar y cocina de la I.E. Celmira Bueno" style="object-position: center 25%;">
+            <div class="gallery-caption">
+              <h4>Ventanilla de Despacho & Cocina Institucional</h4>
+              <p>Instalaciones higiénicas certificadas con Buenas Prácticas de Manufactura (BPM) para la entrega oportuna del PAE.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Llamada a la Acción (CTA) hacia el Menú -->
+        <div class="cta-banner">
+          <div class="cta-content">
+            <h3>¿Listo para descubrir el ciclo de menús PAE?</h3>
+            <p>Consulta la planeación del Programa de Alimentación Escolar (PAE Cali 2026) para Jornada Única (Almuerzo), Mañana (AM) y Tarde (PM) con preparaciones frescas y balanceadas.</p>
+          </div>
+          <button class="btn-white" data-route="menu">
+            Ver Ciclo de Menús PAE
+          </button>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       VISTA 2: MENÚ INTERACTIVO (EN EL MENÚ PRINCIPAL SUPERIOR)
+       ========================================================================= -->
+  <section class="page-section" id="section-menu">
+    <div class="container">
+      <div class="menu-section">
+
+        <div class="section-header">
+          <span class="section-tag">
+            <svg class="star-eight" width="14" height="14" viewBox="0 0 32 32">
+              <path d="M16 0 L18.8 11.2 L28 4 L20.8 13.2 L32 16 L20.8 18.8 L28 28 L18.8 20.8 L16 32 L13.2 20.8 L4 28 L11.2 18.8 L0 16 L11.2 13.2 L4 4 L13.2 11.2 Z" fill="#009A3B"/>
+            </svg>
+            Programa Oficial PAE Cali 2026
+          </span>
+          <h2 class="section-title">Ciclo de Menús Escolares</h2>
+          <p class="section-subtitle">
+            Planeación oficial del Programa de Alimentación Escolar (PAE) para los estudiantes de la Institución Educativa Celmira Bueno de Orejuela.
+          </p>
+        </div>
+
+        <!-- Controles de Menú: Selector de Jornada y Selector de Semanas -->
+        <div class="modality-tabs-container">
+          <!-- Selector de Jornada (Modalidad) -->
+          <div class="modality-tabs">
+            <button class="modality-tab active" data-modality="almuerzo">
+              <span>🍲</span>
+              <span>Almuerzo (Jornada Única)</span>
+            </button>
+            <button class="modality-tab" data-modality="am">
+              <span>🌅</span>
+              <span>Jornada A.M. (Desayuno)</span>
+            </button>
+            <button class="modality-tab" data-modality="pm">
+              <span>🌇</span>
+              <span>Jornada P.M. (Refrigerio)</span>
+            </button>
+          </div>
+
+          <!-- Filtros de Semanas y Barra de Búsqueda -->
+          <div class="menu-controls" style="margin-bottom: 0;">
+            <div class="week-filters-row">
+              <span class="week-filters-label">Ciclo:</span>
+              <button class="week-filter-pill active" data-week="0">Todas las Semanas</button>
+              <button class="week-filter-pill" data-week="1">Semana 1 (Menús 1-5)</button>
+              <button class="week-filter-pill" data-week="2">Semana 2 (Menús 6-10)</button>
+              <button class="week-filter-pill" data-week="3">Semana 3 (Menús 11-15)</button>
+              <button class="week-filter-pill" data-week="4">Semana 4 (Menús 16-20)</button>
+            </div>
+
+            <div class="search-input-wrap">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="menuSearchInput" class="search-input" placeholder="Buscar ingrediente (pollo, cerdo, lentejas, jugo de lulo...)">
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid Dinámico de Alimentos Renderizado por JS con app.js -->
+        <div class="menu-items-grid" id="menuItemsGrid">
+          <!-- Renderizado dinámico -->
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       VISTA 3: HORARIO (DESPLEGABLE MÁS)
+       ========================================================================= -->
+  <section class="page-section" id="section-horario">
+    <div class="container">
+      <div class="schedule-section">
+
+        <div class="section-header">
+          <span class="section-tag">
+            <svg class="star-eight" width="14" height="14" viewBox="0 0 32 32">
+              <path d="M16 0 L18.8 11.2 L28 4 L20.8 13.2 L32 16 L20.8 18.8 L28 28 L18.8 20.8 L16 32 L13.2 20.8 L4 28 L11.2 18.8 L0 16 L11.2 13.2 L4 4 L13.2 11.2 Z" fill="#009A3B"/>
+            </svg>
+            Tiempos de Servicio
+          </span>
+          <h2 class="section-title">Horarios de Atención Escolar</h2>
+          <p class="section-subtitle">
+            Organizamos la atención por franjas horarias para garantizar agilidad, alimentos recién cocinados y una estancia ordenada en el comedor institucional.
+          </p>
+        </div>
+
+        <!-- Widget de Estado en Tiempo Real -->
+        <div class="live-status-card">
+          <div class="status-indicator-wrap">
+            <div class="pulse-dot"></div>
+            <div class="status-text">
+              <h4 id="currentServiceBadge">Consultando horario escolar...</h4>
+              <p id="currentServiceDescription">Sincronizado con la jornada académica de la I.E. Celmira Bueno de Orejuela.</p>
+            </div>
+          </div>
+          <div class="current-clock" id="liveClockDisplay">--:--:--</div>
+        </div>
+
+        <!-- Grid de Franjas Horarias (Mañana y Tarde) -->
+        <div class="schedule-grid" style="grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));">
+          <!-- Franja 1: Mañana -->
+          <div class="schedule-card featured-shift">
+            <span class="shift-badge">Jornada de la Mañana</span>
+            <h3>Atención Matutina</h3>
+            <div class="time-range">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>07:00 A.M. — 11:00 A.M.</span>
+            </div>
+            <p>Servicio continuo de alimentación escolar para la jornada de la mañana: raciones matutinas, desayunos nutritivos, bebidas lácteas y fruta fresca.</p>
+            <div class="menu-shift-tags">
+              <span class="shift-tag">Desayunos escolares</span>
+              <span class="shift-tag">Bebidas lácteas</span>
+              <span class="shift-tag">Fruta fresca</span>
+              <span class="shift-tag">Ración matutina</span>
+            </div>
+          </div>
+
+          <!-- Franja 2: Tarde -->
+          <div class="schedule-card featured-shift">
+            <span class="shift-badge" style="background: var(--cbo-gold-light); color: var(--cbo-gold-dark);">Jornada de la Tarde</span>
+            <h3>Atención Vespertina</h3>
+            <div class="time-range">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>01:20 P.M. — 03:00 P.M.</span>
+            </div>
+            <p>Servicio continuo de alimentación escolar para la jornada de la tarde: almuerzos balanceados, platos fuertes con proteína, acompañantes calientes y ensalada.</p>
+            <div class="menu-shift-tags">
+              <span class="shift-tag">Almuerzos escolares</span>
+              <span class="shift-tag">Plato proteico</span>
+              <span class="shift-tag">Ensaladas</span>
+              <span class="shift-tag">Ración de la tarde</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pautas de Convivencia y Servicio -->
+        <div class="cafeteria-rules-card">
+          <h3>
+            <svg class="star-eight" width="20" height="20" viewBox="0 0 32 32">
+              <path d="M16 0 L18.8 11.2 L28 4 L20.8 13.2 L32 16 L20.8 18.8 L28 28 L18.8 20.8 L16 32 L13.2 20.8 L4 28 L11.2 18.8 L0 16 L11.2 13.2 L4 4 L13.2 11.2 Z" fill="#009A3B"/>
+            </svg>
+            Pautas para una convivencia armónica en la cafetería
+          </h3>
+          <ul class="rules-list">
+            <li><span class="rule-check">✓</span> Realizar la fila de manera ordenada y respetando el turno de los compañeros.</li>
+            <li><span class="rule-check">✓</span> Mantener las mesas limpias y depositar los platos y utensilios en la estación receptora al terminar.</li>
+            <li><span class="rule-check">✓</span> Separar los residuos en los puntos ecológicos (verde: orgánicos, blanco: reciclables).</li>
+            <li><span class="rule-check">✓</span> Lavarse las manos en las estaciones de desinfección antes de consumir alimentos.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       VISTA 3: CONÓCENOS (ADENTRO DE MÁS)
+       ========================================================================= -->
+  <section class="page-section" id="section-conocenos">
+    <div class="container">
+      <div class="about-section">
+
+        <div class="section-header">
+          <span class="section-tag">
+            <svg class="star-eight" width="14" height="14" viewBox="0 0 32 32">
+              <path d="M16 0 L18.8 11.2 L28 4 L20.8 13.2 L32 16 L20.8 18.8 L28 28 L18.8 20.8 L16 32 L13.2 20.8 L4 28 L11.2 18.8 L0 16 L11.2 13.2 L4 4 L13.2 11.2 Z" fill="#009A3B"/>
+            </svg>
+            Nuestra Esencia
+          </span>
+          <h2 class="section-title">Conoce a Smart Menú</h2>
+          <p class="section-subtitle">
+            Cuidamos la alimentación de los niños, jóvenes y maestros de la Institución Educativa Celmira Bueno de Orejuela con vocación, ciencia nutricional y amor.
+          </p>
+        </div>
+
+        <!-- Presentación con Fotografía del Equipo e Higiene -->
+        <div class="about-hero-grid">
+          <div class="about-image-frame">
+            <img src="assets/images/equipo_5.jpg" alt="Personal culinario en la cocina del restaurante escolar CBO" style="object-position: center 20%;">
+          </div>
+
+          <div class="about-text-content">
+            <h3>Comprometidos con el bienestar integral y el rendimiento escolar</h3>
+            <p>
+              Smart Menú nació como una iniciativa transformadora en la I.E. Celmira Bueno de Orejuela para convertir la cafetería escolar en un verdadero centro de formación de hábitos saludables.
+            </p>
+            <p>
+              Creemos firmemente que una mente despierta requiere un cuerpo bien nutrido. Por eso, desterramos las grasas trans reutilizadas, los refrescos ultraprocesados y los excesos de azúcares refinados, sustituyéndolos por platos caseros, frutas de las fincas del Valle del Cauca y recetas llenas de vida.
+            </p>
+            <div style="display: flex; gap: 20px; align-items: center; margin-top: 24px;">
+              <div>
+                <strong style="display: block; font-size: 1.8rem; font-family: var(--font-serif); color: var(--primary-green);">100%</strong>
+                <span style="font-size: 0.8rem; color: var(--text-secondary);">Personal Certificado BPM</span>
+              </div>
+              <div style="border-left: 1px solid var(--border-subtle); padding-left: 20px;">
+                <strong style="display: block; font-size: 1.8rem; font-family: var(--font-serif); color: var(--primary-green);">+1.200</strong>
+                <span style="font-size: 0.8rem; color: var(--text-secondary);">Alumnos Atendidos Diariamente</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =====================================================================
+             EQUIPO HUMANO DEL RESTAURANTE ESCOLAR (ORGANIZACIÓN JERÁRQUICA)
+             ===================================================================== -->
+        <div class="team-showcase-section">
+          <div class="team-showcase-header">
+            <span class="section-tag">
+              <svg class="star-eight" width="14" height="14" viewBox="0 0 32 32">
+                <path d="M16 0 L18.8 11.2 L28 4 L20.8 13.2 L32 16 L20.8 18.8 L28 28 L18.8 20.8 L16 32 L13.2 20.8 L4 28 L11.2 18.8 L0 16 L11.2 13.2 L4 4 L13.2 11.2 Z" fill="#009A3B"/>
+              </svg>
+              Nuestro Talento Humano
+            </span>
+            <h3 class="team-section-title">El Equipo del Restaurante Escolar</h3>
+            <p class="team-section-subtitle">
+              Profesionales con vocación, rigurosos protocolos sanitarios y calidez humana que garantizan a diario la mejor alimentación para los estudiantes de la I.E. Celmira Bueno de Orejuela.
+            </p>
+          </div>
+
+          <!-- NIVEL 1: COORDINACIÓN & SUPERVISIÓN OPERATIVA PAE -->
+          <div class="leader-featured-card">
+            <div class="leader-photo-wrapper">
+              <img src="assets/images/equipo_6.jpg" alt="Coordinador de Operaciones y Logística - Smart Menú CBO" class="leader-photo">
+            </div>
+            <div class="leader-info-content">
+              <span class="leader-badge-pill">
+                <span>★</span> Supervisión PAE Cali 2026
+              </span>
+              <h4 class="leader-title">Coordinación del Restaurante Escolar</h4>
+              <p class="leader-role">Supervisión Operativa & Gestión PAE</p>
+              <p class="leader-bio">
+                Responsable de la planeación y supervisión diaria del comedor: verificación de minutas nutricionales oficiales, control de raciones y gramajes, vigilancia de la cadena de frío y enlace permanente entre el personal de cocina, la rectoría escolar y los acudientes.
+              </p>
+              <div class="leader-skills">
+                <span class="leader-skill-tag">📋 Verificación de Minutas Oficiales</span>
+                <span class="leader-skill-tag">⚖️ Control de Gramajes & Raciones</span>
+                <span class="leader-skill-tag">🤝 Enlace con la Comunidad CBO</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- NIVEL 2: EQUIPO DE MANIPULADORAS DE ALIMENTOS -->
+          <div class="team-subsection-divider">
+            <h4 class="team-subsection-title">
+              <span>🌿</span> Personal de Cocina & Manipulación de Alimentos
+            </h4>
+            <span class="team-subsection-count">5 Integrantes Certificadas BPM</span>
+          </div>
+
+          <div class="staff-cards-grid">
+            <!-- Manipuladora 1 -->
+            <div class="staff-card">
+              <div class="staff-photo-wrapper">
+                <img src="assets/images/equipo_1.jpg" alt="Manipuladora de alimentos - Área de Cocción e Inocuidad" class="staff-member-photo" style="object-position: center 20%;">
+                <span class="staff-badge-pill">Cocción & BPM</span>
+              </div>
+              <div class="staff-info">
+                <h4>Manipuladora de Alimentos</h4>
+                <p class="staff-role-dept">Área de Cocción & Inocuidad</p>
+                <p class="staff-desc">Preparación de raciones calientes bajo estrictos protocolos sanitarios y control térmico.</p>
+                <div class="staff-attributes">
+                  <span class="staff-attr-tag">✓ Higiene Rigurosa</span>
+                  <span class="staff-attr-tag">✓ Control Térmico</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Manipuladora 2 -->
+            <div class="staff-card">
+              <div class="staff-photo-wrapper">
+                <img src="assets/images/equipo_2.jpg" alt="Manipuladora de alimentos - Barra de Atención y Servicio" class="staff-member-photo" style="object-position: center 25%;">
+                <span class="staff-badge-pill">Servicio & Ensamble</span>
+              </div>
+              <div class="staff-info">
+                <h4>Manipuladora de Alimentos</h4>
+                <p class="staff-role-dept">Barra de Servicio & Bebidas</p>
+                <p class="staff-desc">Dispensación de jugos y bebidas naturales, porcionado equilibrado y entrega ágil en comedor.</p>
+                <div class="staff-attributes">
+                  <span class="staff-attr-tag">✓ Porciones Justas</span>
+                  <span class="staff-attr-tag">✓ Calidez Escolar</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Manipuladora 3 -->
+            <div class="staff-card">
+              <div class="staff-photo-wrapper">
+                <img src="assets/images/equipo_3.jpg" alt="Manipuladora de alimentos - Ventanilla de Despacho PAE" class="staff-member-photo" style="object-position: center 20%;">
+                <span class="staff-badge-pill">Entrega Comedor</span>
+              </div>
+              <div class="staff-info">
+                <h4>Manipuladora de Alimentos</h4>
+                <p class="staff-role-dept">Ventanilla de Despacho PAE</p>
+                <p class="staff-desc">Atención en ventanilla de servicio, coordinando la entrega ordenada de desayunos y almuerzos.</p>
+                <div class="staff-attributes">
+                  <span class="staff-attr-tag">✓ Entrega Oportuna</span>
+                  <span class="staff-attr-tag">✓ Orden Escolar</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Manipuladora 4 -->
+            <div class="staff-card">
+              <div class="staff-photo-wrapper">
+                <img src="assets/images/equipo_4.jpg" alt="Manipuladora de alimentos - Cocina Central y Sazón" class="staff-member-photo" style="object-position: center 20%;">
+                <span class="staff-badge-pill">Cocina Central</span>
+              </div>
+              <div class="staff-info">
+                <h4>Manipuladora de Alimentos</h4>
+                <p class="staff-role-dept">Cocina & Sazón Saludable</p>
+                <p class="staff-desc">Elaboración de menús con ingredientes frescos de la región, priorizando cocciones sanas y nutritivas.</p>
+                <div class="staff-attributes">
+                  <span class="staff-attr-tag">✓ Sazón Saludable</span>
+                  <span class="staff-attr-tag">✓ Insumos Frescos</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Manipuladora 5 -->
+            <div class="staff-card">
+              <div class="staff-photo-wrapper">
+                <img src="assets/images/equipo_5.jpg" alt="Manipuladora de alimentos - Aseguramiento de Calidad" class="staff-member-photo" style="object-position: center 20%;">
+                <span class="staff-badge-pill">Calidad & Recepción</span>
+              </div>
+              <div class="staff-info">
+                <h4>Manipuladora de Alimentos</h4>
+                <p class="staff-role-dept">Aseguramiento de Calidad</p>
+                <p class="staff-desc">Inspección de materias primas entrantes, almacenamiento en frío y apoyo integral en cocina.</p>
+                <div class="staff-attributes">
+                  <span class="staff-attr-tag">✓ Insumos del Valle</span>
+                  <span class="staff-attr-tag">✓ Cadena de Frío</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Pilares de Higiene y Calidad Alimentaria -->
+        <div class="pillars-grid">
+          <!-- Pilar 1 -->
+          <div class="pillar-card">
+            <div class="pillar-badge">🧼</div>
+            <h4>Higiene & Certificación BPM</h4>
+            <p>Aplicación rigurosa de las Buenas Prácticas de Manufactura: cofias, guantes sanitarios, desinfección en tres fases de superficies y chequeos médicos continuos.</p>
+          </div>
+
+          <!-- Pilar 2 -->
+          <div class="pillar-card">
+            <div class="pillar-badge">❄️</div>
+            <h4>Control de Cadena de Frío</h4>
+            <p>Monitoreo diario de temperatura en lácteos, carnes y verduras. Conservación adecuada para garantizar la frescura y la inocuidad total de cada bocado.</p>
+          </div>
+
+          <!-- Pilar 3 -->
+          <div class="pillar-card">
+            <div class="pillar-badge">🌱</div>
+            <h4>Ingredientes Locales del Valle</h4>
+            <p>Alianzas directas con productores agrícolas de la región para surtir frutas maduradas al sol y verduras crujientes con cero aditivos dañinos.</p>
+          </div>
+
+          <!-- Pilar 4 -->
+          <div class="pillar-card">
+            <div class="pillar-badge">🎯</div>
+            <h4>Supervisión Nutricional</h4>
+            <p>Platos estructurados con la proporción óptima de macronutrientes recomendada por el Ministerio de Educación Nacional y la FAO para la edad escolar.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       VISTA 5: PÁGINA DE CONTACTO (ADENTRO DE MÁS)
+       ========================================================================= -->
+  <section class="page-section" id="section-contacto">
+    <div class="container">
+      <div class="contact-section">
+
+        <div class="section-header">
+          <span class="section-tag">
+            <svg class="star-eight" width="14" height="14" viewBox="0 0 32 32">
+              <path d="M16 0 L18.8 11.2 L28 4 L20.8 13.2 L32 16 L20.8 18.8 L28 28 L18.8 20.8 L16 32 L13.2 20.8 L4 28 L11.2 18.8 L0 16 L11.2 13.2 L4 4 L13.2 11.2 Z" fill="#009A3B"/>
+            </svg>
+            Comunidad Escolar
+          </span>
+          <h2 class="section-title">Contáctanos & Déjanos tu Opinión</h2>
+          <p class="section-subtitle">
+            Tu voz es fundamental para seguir mejorando nuestro menú y servicio diario. Escríbenos tus sugerencias, preguntas o felicitaciones.
+          </p>
+        </div>
+
+        <div class="contact-layout-grid">
+
+          <!-- LADO IZQUIERDO: Información Institucional Oficial -->
+          <div class="contact-info-panel">
+            <h3>Canales de Atención</h3>
+            <p>Para acudientes, estudiantes y personal de la I.E. Celmira Bueno de Orejuela.</p>
+
+            <div class="info-cards-list">
+              <!-- Correo Institucional -->
+              <div class="info-item">
+                <div class="info-icon-box">✉️</div>
+                <div class="info-item-content">
+                  <h5>Correo Institucional</h5>
+                  <p><a href="mailto:cafeteria@celmirabueno.edu.co">cafeteria@celmirabueno.edu.co</a></p>
+                  <p><a href="mailto:contacto@smartmenucbo.com">contacto@smartmenucbo.com</a></p>
+                </div>
+              </div>
+
+              <!-- Teléfono de Contacto -->
+              <div class="info-item">
+                <div class="info-icon-box">📞</div>
+                <div class="info-item-content">
+                  <h5>Teléfono & WhatsApp</h5>
+                  <p><a href="tel:+576024852345">+57 (602) 485-2345</a></p>
+                  <p><a href="https://wa.me/573186429871" target="_blank" rel="noopener">+57 318 642 9871 (Línea Directa)</a></p>
+                </div>
+              </div>
+
+              <!-- Ubicación Física en el Plantel -->
+              <div class="info-item">
+                <div class="info-icon-box">📍</div>
+                <div class="info-item-content">
+                  <h5>Dirección & Sede Institucional</h5>
+                  <p>Cl. 62b #1a 9-250 (# 9-250 a 336)</p>
+                  <p>I.E. Celmira Bueno de Orejuela — Cali, Valle del Cauca, Colombia</p>
+                </div>
+              </div>
+
+              <!-- Horario de Atención al Público -->
+              <div class="info-item">
+                <div class="info-icon-box">🕒</div>
+                <div class="info-item-content">
+                  <h5>Atención a Padres y Acudientes</h5>
+                  <p>Lunes a Viernes: 7:00 AM — 11:30 AM y 2:00 PM — 4:00 PM</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- LADO DERECHO: Formulario de Comentarios y Sugerencias -->
+          <div class="contact-form-panel">
+            <h3 style="font-family: var(--font-serif); font-size: 1.55rem; margin-bottom: 8px;">Buzón de Sugerencias & Comentarios</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 24px;">Envía tus comentarios directamente al equipo de nutrición y administración de la cafetería.</p>
+
+            <form id="contactForm">
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="contactName" class="form-label">Nombre Completo *</label>
+                  <input type="text" id="contactName" class="form-control" placeholder="Ej. Valentina Gómez" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="contactEmail" class="form-label">Correo Electrónico *</label>
+                  <input type="email" id="contactEmail" class="form-control" placeholder="ejemplo@celmirabueno.edu.co" required>
+                </div>
+              </div>
+
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="contactRole" class="form-label">¿Quién eres en el plantel? *</label>
+                  <select id="contactRole" class="form-control" required>
+                    <option value="estudiante">Estudiante CBO</option>
+                    <option value="acudiente">Padre / Madre de Familia / Acudiente</option>
+                    <option value="docente">Docente / Profesor(a)</option>
+                    <option value="administrativo">Personal Administrativo</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="contactGrade" class="form-label">Grado / Dependencia (Opcional)</label>
+                  <input type="text" id="contactGrade" class="form-control" placeholder="Ej. 8°B / Primaria / Sede Central">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Califica tu experiencia con Smart Menú</label>
+                <div class="rating-picker" id="ratingPicker">
+                  <button type="button" class="star-rate-btn selected" data-value="1">★</button>
+                  <button type="button" class="star-rate-btn selected" data-value="2">★</button>
+                  <button type="button" class="star-rate-btn selected" data-value="3">★</button>
+                  <button type="button" class="star-rate-btn selected" data-value="4">★</button>
+                  <button type="button" class="star-rate-btn selected" data-value="5">★</button>
+                  <span style="font-size: 0.85rem; color: var(--text-muted); margin-left: 8px;">(Excelente)</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contactMessage" class="form-label">Comentario o Sugerencia *</label>
+                <textarea id="contactMessage" class="form-control" placeholder="Cuéntanos cómo podemos mejorar el menú, tus alimentos favoritos o cualquier inquietud nutricional..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 10px;">
+                <span>Enviar Comentario</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       PIE DE PÁGINA (FOOTER)
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Columna 1: Identidad -->
+        <div class="footer-col">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <img src="assets/images/cbo_logo.png" alt="Logo Oficial CBO" style="width: 36px; height: 36px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            <span style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; color: #FFFFFF;">smart menú</span>
+          </div>
+          <p>
+            El restaurante y cafetería escolar de la <strong>Institución Educativa Celmira Bueno de Orejuela</strong>, promoviendo salud, calidad y felicidad en cada jornada académica.
+          </p>
+          <p style="margin-top: 10px; font-size: 0.84rem;">
+            Enlace oficial: <a href="https://www.smartmenucbo.com" target="_blank" rel="noopener" style="color: #FFC72C;">www.smartmenucbo.com</a>
+          </p>
+        </div>
+
+        <!-- Columna 2: Navegación Rápida -->
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul class="footer-links">
+            <li><a href="#inicio" data-route="inicio">Inicio & Nuestro Espacio</a></li>
+            <li><a href="#menu" data-route="menu">Menú Escolar PAE Cali 2026</a></li>
+            <li><a href="#horario" data-route="horario">Horarios de Atención</a></li>
+            <li><a href="#conocenos" data-route="conocenos">Conócenos & Calidad BPM</a></li>
+            <li><a href="#contacto" data-route="contacto">Contacto & Sugerencias</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna 3: Información Institucional -->
+        <div class="footer-col">
+          <h4>I.E. Celmira Bueno de Orejuela</h4>
+          <p>Cl. 62b #1a 9-250 (# 9-250 a 336)</p>
+          <p>Cali, Valle del Cauca — Colombia</p>
+          <p style="margin-top: 8px;">Correo: <span style="color: #FFFFFF;">cafeteria@celmirabueno.edu.co</span></p>
+          <p>Tel: <span style="color: #FFFFFF;">+57 (602) 485-2345</span></p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 Smart Menú — I.E. Celmira Bueno de Orejuela. Todos los derechos reservados.
+        </div>
+        <div>
+          Formando hábitos saludables para el futuro de Cali.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       MODAL INTERACTIVO DE VISUALIZACIÓN DETALLADA DEL PLATO (PAE CALI 2026)
+       ========================================================================= -->
+  <div class="dish-modal-backdrop" id="dishModalBackdrop" aria-hidden="true" role="dialog">
+    <div class="dish-modal-container">
+      <div class="dish-modal-header">
+        <div>
+          <span class="pae-badge-official" id="dishModalBadge">PAE Cali 2026</span>
+          <h3 id="dishModalTitle">Visualizador del Plato Escolar</h3>
+        </div>
+        <button class="btn-close-dish-modal" id="closeDishModalBtn" aria-label="Cerrar visualizador">&times;</button>
+      </div>
+      <div class="dish-modal-body" id="dishModalBody">
+        <!-- Renderizado dinámico de la foto y desglose del plato -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

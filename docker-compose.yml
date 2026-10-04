@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  smart-menu-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: smart-menu-cbo-web:1.0
+    container_name: smart_menu_cbo_app
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
